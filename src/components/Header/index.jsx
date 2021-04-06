@@ -5,7 +5,7 @@ function Header() {
     return (
         <div>
             <header>
-                <h1>Employee Directory</h1>
+                <h1 class='text-center'>Employee Directory</h1>
                 <p>Input name into search field to search a specific employee</p>
             </header>
         </div>
