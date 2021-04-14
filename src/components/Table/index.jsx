@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EmployeeCard from '../EmployeeCard'
 import API from '../../utils/API'
 import './style.css';
 
@@ -9,27 +10,21 @@ class Table extends React.Component {
         super(props);
         this.state = {
             users: [],
+
         }
     }
     componentDidMount() {
         API.getUsers()
             .then((res) => {
-                this.setState({ users: res.data.results })
+                this.setState({ users: res.data.results[0] })
                 console.log(res.data.results);
                 console.log(this.state);
             })
     }
 
-    handleInputChange = (event) => {
-        let { name, value } = event.target;
-        this.setState({
-            [name]: value,
-        })
-    }
-
+    
     render() {
         return (
-
             <table className='table'>
                 <thead>
                     <tr>
@@ -38,6 +33,12 @@ class Table extends React.Component {
                         <th>Phone Number</th>
                         <th>Email</th>
                     </tr>
+                    <EmployeeCard 
+                    name={this.state.users.name.first}************
+                    // name={this.state.users[0]}
+                    // number={this.stateusers[0]}
+                    // email={this.stateusers[0]}
+                    />
                 </thead>
             </table>
         )
@@ -60,3 +61,12 @@ export default Table;
         // }
 
         // render and return your axios call info here
+
+
+        // handleInputChange = (event) => {
+        //     let { name, value } = event.target;
+        //     this.setState({
+        //         [name]: value,
+        //     })
+            
+        // }
