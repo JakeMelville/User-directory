@@ -3,31 +3,33 @@ import API from '../../utils/API'
 import './style.css';
 
 
-    class Table extends React.Component {
+class Table extends React.Component {
 
-        constructor(props) {
-            super(props);
-            this.state = {
-                users: [],
-            }
+    constructor(props) {
+        super(props);
+        this.state = {
+            users: [],
         }
-        componentDidMount() {
-            API.getUsers()
-                .then((res) => {
-                    console.log(res.data.results);
-                })
-        }
-
-        handleInputChange = (event) => {
-            let { name, value } = event.target;
-            this.setState({
-                [name]: value,
+    }
+    componentDidMount() {
+        API.getUsers()
+            .then((res) => {
+                this.setState({ users: res.data.results })
+                console.log(res.data.results);
+                console.log(this.state);
             })
-        }
+    }
 
-        render() {
-            return (
-  
+    handleInputChange = (event) => {
+        let { name, value } = event.target;
+        this.setState({
+            [name]: value,
+        })
+    }
+
+    render() {
+        return (
+
             <table className='table'>
                 <thead>
                     <tr>
@@ -38,13 +40,13 @@ import './style.css';
                     </tr>
                 </thead>
             </table>
-         )
-        }
+        )
     }
+}
 export default Table;
 
 
-                        {/* <th onclick={() => this.sortByName()}>Name</th> */}
+{/* <th onclick={() => this.sortByName()}>Name</th> */ }
 
           //return all our data and display to the page
             //bring in sea
