@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
+import API from '../../utils/API'
 import './style.css';
-import axios from 'axios';
+
 
     class Table extends React.Component {
 
@@ -14,9 +15,10 @@ import axios from 'axios';
 
         //componentdidmount lifecycle method will happen as the page loads
         componentDidMount() {
-            axios.get("https://randomuser.me/api/?results=25&nat=us")
+            API.getUsers()
                 .then((res) => {
                     this.setState({ users: res.data.results })
+                    console.log(res.data.results);
                 })
         }
 
@@ -38,15 +40,18 @@ import axios from 'axios';
             return (
             //return all our data and display to the page
             //bring in sea
-            <table>
+            <table className='table'>
                 <thead>
                     <tr>
                         <th>Image</th>
                         <th onclick={() => this.sortByName()}>Name</th>
-                        <th>phone number</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
                     </tr>
                 </thead>
             </table>
          )
         }
     }
+componentDidMount()
+export default React.Component;
