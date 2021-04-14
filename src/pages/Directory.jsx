@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header/index';
-import API from '../utils/API';
+import Table from '../components/Table'
 
 
 
@@ -8,6 +8,7 @@ function Directory () {
     return (
         <div>
             <Header />
+            <Table />
         </div>
     )
 }
